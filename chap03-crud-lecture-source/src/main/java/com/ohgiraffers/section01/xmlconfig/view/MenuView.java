@@ -39,8 +39,6 @@ public class MenuView {
                 case 1 :
                     menuController.selectAllMenu();
                     break;
-                case 2 :
-
             }
 
         }while (true);

@@ -1,6 +1,10 @@
 package com.ohgiraffers.section01.xmlconfig.controller;
 
+import com.ohgiraffers.section01.xmlconfig.model.dto.MenuDTO;
 import com.ohgiraffers.section01.xmlconfig.model.service.MenuService;
+import com.ohgiraffers.section01.xmlconfig.view.PrintResult;
+
+import java.util.List;
 
 public class MenuController {
 
@@ -14,15 +18,22 @@ public class MenuController {
      *   결정하는 역활을 수행하게 된다. */
 
     private final MenuService menuService;
+    private final PrintResult printResult;
 
     public MenuController() {
         this.menuService = new MenuService();
+        this.printResult = new PrintResult();
     }
 
     public void selectAllMenu() {
 
-        menuService.selectAllMenu();
-
+        List<MenuDTO> menuList = menuService.selectAllMenu();
+        // 즉 값이 존재한다면, 정상 조회
+        if(menuList != null) {
+            printResult.printMenuList(menuList);
+        }else {
+            System.out.println("조회 결과가 없습니다.");
+        }
 
     }
 

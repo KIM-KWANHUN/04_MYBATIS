@@ -2,7 +2,7 @@ package com.ohgiraffers.section01.xmlconfig.model.dto;
 
 public class MenuDTO {
 
-    private int menucode;
+    private int menuCode;
     private String menuName;
     private int menuPrice;
     private int categoryCode;
@@ -10,20 +10,20 @@ public class MenuDTO {
 
     public MenuDTO() {}
 
-    public MenuDTO(int menucode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
-        this.menucode = menucode;
+    public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+        this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
         this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
     }
 
-    public int getMenucode() {
-        return menucode;
+    public int getMenuCode() {
+        return menuCode;
     }
 
-    public void setMenucode(int menucode) {
-        this.menucode = menucode;
+    public void setMenuCode(int menuCode) {
+        this.menuCode = menuCode;
     }
 
     public String getMenuName() {
@@ -61,7 +61,7 @@ public class MenuDTO {
     @Override
     public String toString() {
         return "MenuDTO{" +
-                "menucode=" + menucode +
+                "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
                 ", categoryCode=" + categoryCode +

@@ -1,5 +1,13 @@
 package com.ohgiraffers.section01.xmlconfig.model.service;
 
+import com.ohgiraffers.section01.xmlconfig.model.dao.MenuDAO;
+import com.ohgiraffers.section01.xmlconfig.model.dto.MenuDTO;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
+
+import static com.ohgiraffers.section01.xmlconfig.common.Template.getSqlSession;
+
 public class MenuService {
 
     /* comment.
@@ -10,9 +18,22 @@ public class MenuService {
     *   - 트렌젝션(commit, rollback) 제어
     *   - SqlSession 닫기  */
 
-    public void selectAllMenu() {
-        
+    private final MenuDAO menuDAO;
 
+    public MenuService() {
+        this.menuDAO = new MenuDAO();
+    }
 
+    public List<MenuDTO> selectAllMenu() {
+
+        SqlSession sqlSession = getSqlSession();
+
+        // DAO 는 데이터베이스와 직접 소통하는 클래스이다.
+        // 따라서 소통을 하기 위해서는 통로 == Connection == SqlSession 이 필요하다.
+        List<MenuDTO> menuList = menuDAO.selectAllMenu(sqlSession);
+
+        sqlSession.close();
+
+        return menuList;
     }
 }
