@@ -5,6 +5,7 @@ import com.ohgiraffers.section01.xmlconfig.model.service.MenuService;
 import com.ohgiraffers.section01.xmlconfig.view.PrintResult;
 
 import java.util.List;
+import java.util.Map;
 
 public class MenuController {
 
@@ -32,10 +33,25 @@ public class MenuController {
         if(menuList != null) {
             printResult.printMenuList(menuList);
         }else {
-            System.out.println("조회 결과가 없습니다.");
+            printResult.printErrorMessage("selectList");
         }
 
     }
 
 
+    public void selectMenuByCode(Map<String, String> parameter) {
+
+        // 나중에 나올 개념이지만, 나중에 화면에서 입력 받은 값을
+        // 컨트롤러가 전달 받게 되면 String 타입으로 넘어오게 된다.
+        // 사용자가 입력한 String 타입의 값을 우리가 설계한 자료형에 맞게 parsing
+        int code = Integer.parseInt(parameter.get("menuCode"));
+
+        MenuDTO menu = menuService.selectMenuByMenuCode(code);
+
+        if(menu != null) {
+            printResult.printMenu(menu);
+        }else {
+            printResult.printErrorMessage("selectOne");
+        }
+    }
 }

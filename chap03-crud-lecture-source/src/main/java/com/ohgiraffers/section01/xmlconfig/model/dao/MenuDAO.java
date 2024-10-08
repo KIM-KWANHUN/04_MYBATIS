@@ -18,6 +18,11 @@ public class MenuDAO {
 
 
     }
+
+    public MenuDTO selectMenuByMenuCode(SqlSession sqlSession, int code) {
+
+        return sqlSession.selectOne("MenuMapper.selectMenuByMenuCode", code);
+    }
 }
 
 // Application -> View -> Controller -> Service -> DAO -> DB
