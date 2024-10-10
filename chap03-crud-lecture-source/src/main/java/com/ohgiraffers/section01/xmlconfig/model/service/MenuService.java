@@ -52,8 +52,8 @@ public class MenuService {
 
     public boolean insertNewMenu(MenuDTO newMenu) {
 
-        // 1. SqlSession 생성
-        SqlSession sqlSession = getSqlSession();
+            // 1. SqlSession 생성
+            SqlSession sqlSession = getSqlSession();
 
         // 2. DAO 계층의 메소드 호출하기
         int result = menuDAO.insertNewMenu(sqlSession, newMenu);

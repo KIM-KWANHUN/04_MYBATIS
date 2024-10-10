@@ -1,5 +1,6 @@
 package com.ohgiraffers.section03.remix.service;
 
+import com.ohgiraffers.section01.xmlconfig.common.Template;
 import com.ohgiraffers.section03.remix.dto.MenuDTO;
 import com.ohgiraffers.section03.remix.model.dao.MenuMapper;
 import org.apache.ibatis.session.SqlSession;
@@ -28,5 +29,73 @@ public class MenuService {
 
         return menuList;
 
+    }
+
+    public MenuDTO selectMenuByMenuCode(int code) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        MenuDTO menu = menuMapper.selectMenuByMenuCode(code);
+
+        return menu;
+    }
+
+
+    public boolean insertNewMenu(MenuDTO newmenu) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = menuMapper.insertNewMenu(newmenu);
+
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+
+    }
+
+    public boolean modifyMenu(MenuDTO newMenu) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = menuMapper.modifyMenu(newMenu);
+
+        if(result > 0 ) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
+    public boolean deleteMenu(MenuDTO deleteMenu) {
+        SqlSession sqlSession = getSqlSession();
+
+        menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int result = menuMapper.deleteMenu(deleteMenu);
+
+        if(result > 0 ) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+
+        return result > 0 ? true : false;
     }
 }
