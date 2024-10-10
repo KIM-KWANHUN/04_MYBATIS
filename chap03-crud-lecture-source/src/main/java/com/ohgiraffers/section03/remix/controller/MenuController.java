@@ -1,11 +1,10 @@
-package com.ohgiraffers.section02.javaconfig.controller;
+package com.ohgiraffers.section03.remix.controller;
 
-import com.ohgiraffers.section02.javaconfig.model.dto.MenuDTO;
-import com.ohgiraffers.section02.javaconfig.model.service.MenuService;
-import com.ohgiraffers.section02.javaconfig.view.PrintResult;
+import com.ohgiraffers.section03.remix.dto.MenuDTO;
+import com.ohgiraffers.section03.remix.service.MenuService;
+import com.ohgiraffers.section03.remix.view.PrintResult;
 
 import java.util.List;
-import java.util.Map;
 
 public class MenuController {
 

@@ -23,11 +23,11 @@ public interface MenuMapper {
             ", MENU_NAME\n" +
             ", MENU_PRICE\n" +
             ", CATEGORY_CODE\n" +
-            ", ORDERABLE_CODE\n" +
+            ", ORDERABLE_STATUS\n" +
             "FROM TBL_MENU\n" +
             "WHERE ORDERABLE_STATUS = 'Y'\n" +
             "ORDER BY MENU_CODE")
-    @ResultMap("menuResultMap")
+//    @ResultMap("menuResultMap")
 
     List<MenuDTO> selectAllMenu();
 }
