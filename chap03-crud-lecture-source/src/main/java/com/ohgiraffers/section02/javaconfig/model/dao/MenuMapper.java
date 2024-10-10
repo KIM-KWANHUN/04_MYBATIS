@@ -30,4 +30,5 @@ public interface MenuMapper {
 //    @ResultMap("menuResultMap")
 
     List<MenuDTO> selectAllMenu();
+
 }
