@@ -49,4 +49,42 @@ public class MenuService {
 
         return menu;
     }
+
+    public boolean insertNewMenu(MenuDTO newMenu) {
+
+        // 1. SqlSession 생성
+        SqlSession sqlSession = getSqlSession();
+
+        // 2. DAO 계층의 메소드 호출하기
+        int result = menuDAO.insertNewMenu(sqlSession, newMenu);
+
+        // 3. dml(insert, update, delete) 구문은 트랜젝션 제어
+        //    해주어야 한다. -> 저장을 할 것인지, 롤백을 할 것인지
+        if(result > 0) { // ** dml같은 구문은 if문이 추가된다. **
+            sqlSession.commit(); // 저장
+        } else {
+            sqlSession.rollback(); // 롤백
+        }
+
+        // 4. SqlSession 닫기
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
+
+    public boolean modifyMenu(MenuDTO modifyMenu) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        int result = menuDAO.uadateMenu(sqlSession, modifyMenu);
+
+        if(result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
 }

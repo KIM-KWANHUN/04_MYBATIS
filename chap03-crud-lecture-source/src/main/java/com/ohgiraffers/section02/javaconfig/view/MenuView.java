@@ -1,6 +1,7 @@
-package com.ohgiraffers.section01.xmlconfig.view;
+package com.ohgiraffers.section02.javaconfig.view;
 
-import com.ohgiraffers.section01.xmlconfig.controller.MenuController;
+
+import com.ohgiraffers.section02.javaconfig.controller.MenuController;
 
 import java.util.HashMap;
 import java.util.Map;

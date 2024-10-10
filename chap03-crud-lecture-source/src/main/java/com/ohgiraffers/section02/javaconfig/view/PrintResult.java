@@ -1,6 +1,8 @@
-package com.ohgiraffers.section01.xmlconfig.view;
+package com.ohgiraffers.section02.javaconfig.view;
 
-import com.ohgiraffers.section01.xmlconfig.model.dto.MenuDTO;
+
+
+import com.ohgiraffers.section02.javaconfig.model.dto.MenuDTO;
 
 import java.util.List;
 
