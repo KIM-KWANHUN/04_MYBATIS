@@ -5,6 +5,9 @@
 <configuration>
 
     <properties resource="config/connection-info.properties" />
+    <typeAliases>
+        <typeAlias type="com.ohgiraffers.common.MenuDTO" alias="MenuDTO"/>
+    </typeAliases>
 
     <environments default="dev">
         <environment id="dev">
@@ -17,4 +20,7 @@
             </dataSource>
         </environment>
     </environments>
+    <mappers>
+        <package name="com.ohgiraffers.section01.dynamic"/>
+    </mappers>
 </configuration>
