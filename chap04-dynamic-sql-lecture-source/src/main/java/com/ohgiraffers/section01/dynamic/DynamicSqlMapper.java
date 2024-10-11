@@ -11,4 +11,6 @@ public interface DynamicSqlMapper {
     List<MenuDTO> selectMenuByPrice(Map<String, Integer> map);// 쿼리문을 동작시킬수 있는 아이디
 
     List<MenuDTO> searchMenu(SearchCriteria searchCriteria); // 쿼리문을 동작시킬수 있는 아이디
+
+    List<MenuDTO> searchMenuBySupCategory(SearchCriteria searchCriteria);
 }
