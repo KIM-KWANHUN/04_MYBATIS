@@ -48,5 +48,37 @@
         ORDER BY
             MENU_CODE
     </select>
+    <!-- index 1. condition 이라는 변수에 메뉴와 카테고리를 입력 할 수 있는데
+                  메뉴로 선택을 하면, join 할 필요 없이 검색어에 해당하는 메뉴 조회
+                  condition 이라는 변수에 카테고리로 선택을 하면 join 을 해서
+                  카테고리명에 해당하는 메뉴 조회 category_name 은 없기 때문에 join 을 이용해야 한다. -->
+    <select id="searchMenu" parameterType="com.ohgiraffers.common.SearchCriteria" resultMap="menuResultMap">
+        SELECT
+            A.MENU_CODE,
+            A.MENU_NAME,
+            A.CATEGORY_CODE,
+            A.ORDERABLE_STATUS
+        FROM
+            TBL_MENU A
+        <if test="condition == 'category'">
+            JOIN
+            TBL_CATEGORY B
+            ON
+            (A.CATEGORY_CODE = B.CATEGORY_CODE)
+        </if>
+        WHERE
+            A.ORDERABLE_STATUS = 'Y'
+        <if test="condition == 'menuName'">
+            AND
+            A.MENU_NAME LIKE CONCAT('%', #{value}, '%')
+            <!-- concat : 문자열 붙이기 -->
+        </if>
+        <if test="condition == 'category'">
+            AND
+            B.CATEGORY_NAME = #{value}
+        </if>
+        ORDER BY A.MENU_CODE
+
+    </select>
 
 </mapper>

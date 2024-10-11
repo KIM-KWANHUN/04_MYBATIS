@@ -1,5 +1,7 @@
 package com.ohgiraffers.section01.dynamic;
 
+import com.ohgiraffers.common.SearchCriteria;
+
 import java.util.Scanner;
 
 public class Application {
@@ -54,7 +56,7 @@ public class Application {
                     menuService.selectMenuByPrice(intputPrice());
                     break;
                 case 2 :
-
+                    menuService.searchMenu(inputSearchCriteria());
                     break;
                 case 9 :
                     System.out.println("if 서브메뉴 종료");
@@ -66,6 +68,8 @@ public class Application {
 
     }
 
+
+
     private static int intputPrice() {
 
         Scanner sc = new Scanner(System.in);
@@ -73,6 +77,19 @@ public class Application {
         int price = sc.nextInt();
 
         return price;
+        // 맵을 이용해 사용
+    }
+
+    private static SearchCriteria inputSearchCriteria() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("검색 기준을 선택해주세요(menuName or category) : ");
+        String condition = sc.nextLine();
+        System.out.print("검색어를 입력해주세요 : ");
+        String value = sc.nextLine();
+
+        return new SearchCriteria(condition, value);
+        // DTO를 이용해 사용
     }
 
 }

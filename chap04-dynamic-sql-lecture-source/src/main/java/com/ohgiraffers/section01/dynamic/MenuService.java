@@ -1,6 +1,7 @@
 package com.ohgiraffers.section01.dynamic;
 
 import com.ohgiraffers.common.MenuDTO;
+import com.ohgiraffers.common.SearchCriteria;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.HashMap;
@@ -40,6 +41,26 @@ private DynamicSqlMapper mapper;
           for(MenuDTO menu : menuList) {
               System.out.println(menu);
           }
+        } else {
+            System.out.println("검색 결과 없습니다.");
+        }
+
+        sqlSession.close();
+
+    }
+
+    public void searchMenu(SearchCriteria searchCriteria) {
+
+        SqlSession sqlSession = getSqlSession(); // SQL 불러오기
+
+        mapper = sqlSession.getMapper(DynamicSqlMapper.class); // 사용한 클래스 불러오기
+
+        List<MenuDTO> menuList = mapper.searchMenu(searchCriteria); // 클래스를 menuList 에 담아서 mapper 로 보내기
+
+        if(menuList != null && menuList.size() > 0) {
+            for(MenuDTO menu : menuList) {
+                System.out.println(menu);
+            }
         } else {
             System.out.println("검색 결과 없습니다.");
         }
