@@ -83,7 +83,7 @@ public class Application {
     private static Map<String, Object> inputSearchCriteriaMap() {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("검색 조건(category or name or both or null)");
+        System.out.print("검색 조건(category or name or both or null) : ");
         String condition = sc.nextLine();
 
         Map<String, Object> criteria = new HashMap<>();
