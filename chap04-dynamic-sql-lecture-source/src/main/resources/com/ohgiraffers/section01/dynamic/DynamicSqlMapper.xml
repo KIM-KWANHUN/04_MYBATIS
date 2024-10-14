@@ -185,7 +185,7 @@
               - 2. prefixOverrides 속성 : 처리 후 엘리먼트의 내용이 있으면 가장 앞에 속성 값에 해당하는 문자 삭제
               - 3. suffix 속성 : 처리 후 엘리먼트의 내용이 있으면 가장 뒤에 붙여주는 내용 기술
               - 4. suffixOverrides 속성 : 처리 후 엘리먼트 내용 중 가장 뒤에 속성값에 해당하는 문자 삭제 -->
-        <trim>
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
             <if test="nameValue != null">
                 MENU_NAME LIKE CONCAT('%', #{menuName}, '%')
             </if>
@@ -195,4 +195,34 @@
 
         </trim>
     </select>
+    <!-- 이 쿼리문은 모든 컬럼에 대해 수정할 값을 입력한다는 가정하에
+         작성이 되었다. 값을 입력한 일부 컬럼만 변경하고 싶다면?
+         <if> 태그를 사용해서 일부 컬럼만 수정하게 바꿔보자 -->
+    <update id="modifyMenu" parameterType="hashmap">
+<!--        UPDATE-->
+<!--            TBL_MENU-->
+<!--        SET-->
+<!--            MENU_NAME = #{name},-->
+<!--            CATEGORY_CODE = #{categoryCode},-->
+<!--            ORDERABLE_STATUS = #{orderableStatus}-->
+<!--        WHERE-->
+<!--            MENU_CODE = #{code}-->
+
+        <!-- <set> 엘리먼트 는 set 을 붙여주고 구분자(,) 를 제거해주는 역활을 한다. -->
+        UPDATE
+            TBL_MENU
+        <trim prefix="SET" prefixOverrides=",">
+            <if test="name != null and name != ''">
+                MENU_NAME = #{name}
+            </if>
+            <if test="categoryCode != null and categoryCode gt 0">
+                , CATEGORY_CODE = #{categoryCode}
+            </if>
+            <if test="orderableStatus != null and orderableStatus != ''">
+                , ORDERABLE_STATUS = #{orderableStatus}
+            </if>
+                WHERE MENU_CODE = #{code}
+        </trim>
+
+    </update>
 </mapper>
