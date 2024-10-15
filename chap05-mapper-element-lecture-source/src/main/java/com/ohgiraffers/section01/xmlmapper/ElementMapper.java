@@ -10,4 +10,6 @@ public interface ElementMapper {
 
     List<MenuDTO> selectResultMapTest();
 
+    List<MenuDTO> selectResultMapConstructor();
+
 }

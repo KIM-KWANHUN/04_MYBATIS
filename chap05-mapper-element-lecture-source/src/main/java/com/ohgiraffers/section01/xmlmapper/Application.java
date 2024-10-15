@@ -46,7 +46,7 @@ public class Application {
         do{
             System.out.println("===============ResultMap 서브메뉴==============");
             System.out.println("1. <resultMap> 테스트");
-            System.out.println("2. <constructor> 테스트");
+            System.out.println("2. <constructor> 테스트"); //Constructor : 생성자 -> 생성자를 통해서 값을 넣어준다(매개변수, 전달인자)
             System.out.println("3. <association> 테스트");
             System.out.println("4. <collection> 테스트");
             System.out.print("메뉴 번호를 입력해주세요 : ");
@@ -58,7 +58,11 @@ public class Application {
                     elementService.selectResultMapTest();
                     break;
                 case 2 :
-
+                    elementService.selectResultMapConstructor();
+                    break;
+                case 3 :
+                    elementService.selectResultMapAssociation();
+                    break;
             }
         } while (true);
 

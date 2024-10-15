@@ -50,4 +50,27 @@ public class ElementService {
 
         sqlSession.close();
     }
+
+    public void selectResultMapConstructor() {
+
+        SqlSession sqlSession = getSqlSession();
+
+        mapper = sqlSession.getMapper(ElementMapper.class);
+
+        List<MenuDTO> menuList = mapper.selectResultMapConstructor();
+
+        for(MenuDTO menu : menuList) {
+            System.out.println(menu);
+        }
+
+        sqlSession.close();
+    }
+
+    public void selectResultMapAssociation() {
+
+        SqlSession sqlSession = getSqlSession();
+        mapper = sqlSession.getMapper(ElementMapper.class);
+
+
+    }
 }
