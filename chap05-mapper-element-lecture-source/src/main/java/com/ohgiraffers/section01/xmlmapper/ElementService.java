@@ -1,5 +1,6 @@
 package com.ohgiraffers.section01.xmlmapper;
 
+import com.ohgiraffers.common.MenuAndCatergoryDTO;
 import com.ohgiraffers.common.MenuDTO;
 import org.apache.ibatis.session.SqlSession;
 
@@ -71,6 +72,12 @@ public class ElementService {
         SqlSession sqlSession = getSqlSession();
         mapper = sqlSession.getMapper(ElementMapper.class);
 
+        List<MenuAndCatergoryDTO> menuAndCatergoryList = mapper.selectResultMapAssociationTest();
 
+        for(MenuAndCatergoryDTO menu : menuAndCatergoryList) {
+            System.out.println(menu);
+        }
+
+        sqlSession.close();
     }
 }

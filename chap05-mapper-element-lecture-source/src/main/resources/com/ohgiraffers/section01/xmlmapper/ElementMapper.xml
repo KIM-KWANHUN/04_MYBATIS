@@ -91,5 +91,37 @@
         WHERE
             ORDERABLE_STATUS = 'Y'
     </select>
-    <!--comment. association-->
+    <!--comment. association
+            resultMap 을 구성하는 방법
+            1. 따로만든 result 이용 -->
+    <resultMap id="categoryResultMap" type="com.ohgiraffers.common.CategoryDTO">
+        <id property="code" column="CATEGORY_CODE"/>
+        <result property="name" column="CATEGORY_NAME"/>
+        <result property="refCategoryCode" column="REF_CATEGORY_CODE"/>
+    </resultMap>
+    <resultMap id="menuAndCategoryResultMap" type="com.ohgiraffers.common.MenuAndCatergoryDTO">
+        <id property="code" column="MENU_CODE"/>
+        <result property="name" column="MENU_NAME"/>
+        <result property="price" column="MENU_PRICE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+        <association property="categoryDTO" resultMap="categoryResultMap"/>
+    </resultMap>
+    <select id="selectResultMapAssociationTest" resultMap="menuAndCategoryResultMap">
+        SELECT
+            A.MENU_CODE,
+            A.MENU_NAME,
+            A.ORDERABLE_STATUS,
+            A.MENU_PRICE,
+            B.CATEGORY_CODE,
+            B.CATEGORY_NAME,
+            B.REF_CATEGORY_CODE
+        FROM
+            TBL_MENU A
+        JOIN
+            TBL_CATEGORY B
+        ON
+            (A.CATEGORY_CODE = B.CATEGORY_CODE)
+        WHERE
+            A.ORDERABLE_STATUS = 'Y'
+    </select>
 </mapper>

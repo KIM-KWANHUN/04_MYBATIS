@@ -1,5 +1,6 @@
 package com.ohgiraffers.section01.xmlmapper;
 
+import com.ohgiraffers.common.MenuAndCatergoryDTO;
 import com.ohgiraffers.common.MenuDTO;
 
 import java.util.List;
@@ -11,5 +12,7 @@ public interface ElementMapper {
     List<MenuDTO> selectResultMapTest();
 
     List<MenuDTO> selectResultMapConstructor();
+
+    List<MenuAndCatergoryDTO> selectResultMapAssociationTest();
 
 }

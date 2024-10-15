@@ -37,4 +37,13 @@ public class CategoryDTO {
     public void setRefCategoryCode(Integer refCategoryCode) {
         this.refCategoryCode = refCategoryCode;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryDTO{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", refCategoryCode=" + refCategoryCode +
+                '}';
+    }
 }
