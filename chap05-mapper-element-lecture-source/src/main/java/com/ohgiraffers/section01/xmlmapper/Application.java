@@ -24,7 +24,7 @@ public class Application {
                     elementService.selectCacheTest();
                     break;
                 case 2 :
-
+                    resultMapSubMenu();
                     break;
                 case 3 :
 
@@ -36,5 +36,31 @@ public class Application {
 
 
         }while (true);
+    }
+
+    private static void resultMapSubMenu() {
+
+        Scanner sc = new Scanner(System.in);
+        ElementService elementService = new ElementService();
+
+        do{
+            System.out.println("===============ResultMap 서브메뉴==============");
+            System.out.println("1. <resultMap> 테스트");
+            System.out.println("2. <constructor> 테스트");
+            System.out.println("3. <association> 테스트");
+            System.out.println("4. <collection> 테스트");
+            System.out.print("메뉴 번호를 입력해주세요 : ");
+
+            int no = sc.nextInt();
+
+            switch (no) {
+                case 1 :
+                    elementService.selectResultMapTest();
+                    break;
+                case 2 :
+
+            }
+        } while (true);
+
     }
 }
