@@ -37,4 +37,27 @@
         VALUE
         (#{menuName},#{menuPrice},#{categoryCode},'Y')
     </insert>
+
+    <select id="menuByPrice" parameterType="hashmap" resultMap="menuResultMap">
+        SELECT
+            *
+        FROM
+            TBL_MENU
+        WHERE
+            ORDERABLE_STATUS = 'Y'
+        <if test="price gte 0 and price lte 10000">
+            <![CDATA[AND MENU_PRICE < #{price}]]>
+        </if>
+        <if test="price gt 10000 and price lte 20000">
+            AND MENU_PRICE BETWEEN 10000 AND #{price}
+        </if>
+        <if test="price gt 20000 and price lte 30000">
+            AND MENU_PRICE BETWEEN 20000 AND #{price}
+        </if>
+        <if test="price gt 30000">
+            AND MENU_PRICE BETWEEN 30000 AND #{price}
+        </if>
+        ORDER BY
+            MENU_CODE
+    </select>
 </mapper>

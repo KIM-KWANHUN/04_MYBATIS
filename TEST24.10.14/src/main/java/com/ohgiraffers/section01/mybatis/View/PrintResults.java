@@ -32,8 +32,12 @@ public class PrintResults {
                 break;
             case "selectMenuCode" :
                 errorMessage = "메뉴코드 조회에 실패하셨습니다.";
+                break;
             case "insertError" :
                 errorMessage = "메뉴추가에 실패하셨습니다.";
+                break;
+            case "selectMenuByPrice" :
+                errorMessage = "메뉴가격 조회에 실패하였습니다.";
         }
 
         System.out.println(errorMessage);
@@ -58,6 +62,9 @@ public class PrintResults {
     }
 
 
+    public void printmenuByPrice(List<MenuDTO> menuList) {
+        System.out.println(menuList + "요청하신 가격 조회입니다.");
     }
+}
 
 

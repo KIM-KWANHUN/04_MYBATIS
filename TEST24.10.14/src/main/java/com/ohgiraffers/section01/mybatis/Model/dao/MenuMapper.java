@@ -7,7 +7,9 @@ import java.util.List;
 public interface MenuMapper {
     List<MenuDTO> menuSelectAll();
 
-    MenuDTO menuCodeSelect();
+    MenuDTO menuCodeSelect(int code);
 
     int menuInsert(MenuDTO menuDTO);
+
+    List<MenuDTO> menuByPrice(int price);
 }

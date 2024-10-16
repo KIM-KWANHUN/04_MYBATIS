@@ -1,6 +1,7 @@
 package com.ohgiraffers.section01.mybatis.Controller;
 
 import com.ohgiraffers.section01.mybatis.Model.dto.MenuDTO;
+import com.ohgiraffers.section01.mybatis.Model.dto.SearchCriteria;
 import com.ohgiraffers.section01.mybatis.Model.service.MenuService;
 import com.ohgiraffers.section01.mybatis.View.PrintResults;
 
@@ -57,5 +58,23 @@ public class MenuController {
         } else {
             printResults.printError("insertError");
         }
+    }
+
+    public void menuByPrice(Map<String, String> parameter) {
+        int price = Integer.parseInt(parameter.get("price"));
+
+        List<MenuDTO> menuList = menuService.menuByPrice(price);
+
+        if(menuList != null) {
+            printResults.printmenuByPrice(menuList);
+        } else {
+            printResults.printError("selectMenuByPrice");
+        }
+
+    }
+
+    public void searchMenuBySupCategory(SearchCriteria searchCriteria) {
+       List<MenuDTO> menuList = menuService.searchMenuBySupCategory(searchCriteria);
+
     }
 }

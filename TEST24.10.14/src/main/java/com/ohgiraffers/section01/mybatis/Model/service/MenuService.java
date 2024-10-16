@@ -29,7 +29,7 @@ public class MenuService {
 
         mapper = sqlSession.getMapper(MenuMapper.class);
 
-        MenuDTO menuDTO = mapper.menuCodeSelect();
+        MenuDTO menuDTO = mapper.menuCodeSelect(code);
 
         sqlSession.close();
 
@@ -51,5 +51,18 @@ public class MenuService {
         sqlSession.close();
 
         return result > 0 ? true : false;
+    }
+
+
+    public List<MenuDTO> menuByPrice(int price) {
+        SqlSession sqlSession = getSqlSession();
+
+        mapper = sqlSession.getMapper(MenuMapper.class);
+
+        List<MenuDTO> menuDTO = mapper.menuByPrice(price);
+
+        sqlSession.close();
+
+        return menuDTO;
     }
 }
